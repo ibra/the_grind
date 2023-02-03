@@ -13,7 +13,9 @@ using namespace std;
 bool isLeapYear(int currentYear)
 {
     if((currentYear % 4 == 0 && currentYear % 100 != 0) || currentYear % 400 == 0)
+    {
         return true;
+    }
 
     return false;
 }
@@ -48,35 +50,35 @@ int getDate(int days)
         {
             date = 1;
             currentMonth++;
+            if(currentMonth > 11)
+            {
+                currentMonth = 0;
+                currentYear++;
+                date = 1;
+                monthDays[1] = 28;
+            }
             continue;
         }
-
-        if(currentMonth > 11)
-        {
-            currentMonth = 0;
-            currentYear++;
-            date = 1;
-            monthDays[1] = 28;
-            continue;
-        }
-
         date++;
     }
 
-    cout << date << " -- " << currentMonth << "\n";
+    // cout << date << " -- " << currentMonth << "\n";
     return date;
 }
 
 int main()
 {
-    // ifstream cin("friday.in");
+    ifstream cin("friday.in");
+
+    ofstream friday;
+    friday.open("friday.out");
 
     int years;
     cin >> years;
 
     int days = getTotalDays(years);
 
-    array<int, 6> frequencies = {};
+    array<int, 7> frequencies = {};
     int currentDay = 0;
 
     for (int i = 0; i < days; ++i) {
@@ -89,9 +91,12 @@ int main()
         currentDay += 1;
     }
 
-    for (int i = 0; i < frequencies.size(); ++i) {
-        cout << frequencies[i] << " ";
+    int order[7] = {5,6,0, 1,2,3,4};
+
+    for (int i = 0; i < frequencies.size(); i++) {
+        friday << frequencies[order[i]] << " ";
     }
 
+    friday.close();
     return 0;
 }
