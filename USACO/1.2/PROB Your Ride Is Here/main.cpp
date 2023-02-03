@@ -18,11 +18,10 @@ long long getValue(string input)
         product *= position;
     }
 
-    return product;
+    return product % 47;
 }
 
-int main()
-{
+int main() {
     ifstream cin("ride.in");
 
     string cometName, groupName;
@@ -31,7 +30,7 @@ int main()
     ofstream ride;
     ride.open("ride.out");
 
-    if(getValue(cometName) % 47 == getValue(groupName) % 47)
+    if(getValue(cometName) == getValue(groupName))
         ride << "GO" << endl;
     else
         ride << "STAY" << endl;
