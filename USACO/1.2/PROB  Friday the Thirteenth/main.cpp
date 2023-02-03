@@ -6,6 +6,7 @@ PROG: friday
 
 #include <iostream>
 #include <fstream>
+#include <array>
 
 using namespace std;
 
@@ -16,7 +17,6 @@ bool isLeapYear(int currentYear)
 
     return false;
 }
-
 
 int getTotalDays(int years)
 {
@@ -31,17 +31,40 @@ int getTotalDays(int years)
     return days;
 }
 
-//TODO: implement this function properly
 int getDate(int days)
 {
-    //TODO: Feb can be both 28 and 29
+    int date = 1;
+
     int monthDays[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int currentMonth = 0;
 
-    int currentDay = 0;
+    int currentYear = 1900;
+
     for (int i = 0; i < days; ++i) {
+        if(isLeapYear(currentYear))
+            monthDays[1] = 29;
 
-        currentDay += 1;
+        if(date == monthDays[currentMonth])
+        {
+            date = 1;
+            currentMonth++;
+            continue;
+        }
+
+        if(currentMonth > 11)
+        {
+            currentMonth = 0;
+            currentYear++;
+            date = 1;
+            monthDays[1] = 28;
+            continue;
+        }
+
+        date++;
     }
+
+    cout << date << " -- " << currentMonth << "\n";
+    return date;
 }
 
 int main()
@@ -53,17 +76,21 @@ int main()
 
     int days = getTotalDays(years);
 
-    int frequencies[6] = {};
-    int currentDay = 0; //0 is Monday, 6 is Sunday
+    array<int, 6> frequencies = {};
+    int currentDay = 0;
 
     for (int i = 0; i < days; ++i) {
-       if(currentDay >= 7)
+       if(currentDay > 6)
            currentDay = 0;
 
        if(getDate(i) == 13)
            frequencies[currentDay] += 1;
 
         currentDay += 1;
+    }
+
+    for (int i = 0; i < frequencies.size(); ++i) {
+        cout << frequencies[i] << " ";
     }
 
     return 0;
