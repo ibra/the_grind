@@ -22,7 +22,9 @@ bool isLeapYear(int currentYear)
 
 int main()
 {
+    ifstream cin("friday.in");
     ofstream friday;
+
     friday.open("friday.out");
 
     int years;
@@ -37,7 +39,7 @@ int main()
         for (int month = 0; month < 12; ++month) {
             monthDays[1] = isLeapYear(year) ? 29 : 28;
             int day = (curDay + 12) % 7;
-            
+
             frequencies[day]++;
             curDay += monthDays[month];
         }
