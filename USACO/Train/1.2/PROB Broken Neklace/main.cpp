@@ -20,7 +20,6 @@ int main()
 
     for (int i = 1; i < beadCount; ++i) {
         string firstHalf, secondHalf;
-
         int storedScore = 0;
 
         for (int j = 0; j < i; ++j) {
@@ -47,6 +46,9 @@ int main()
 
             if(necklace[j] == necklace[j-1] || secondHalf[j] == 'w')
                 storedScore++;
+
+
+            neckl
         }
 
         if(storedScore > bestScore)
