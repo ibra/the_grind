@@ -13,15 +13,15 @@ int main()
     int t;
     cin >> t;
 
-    // 1  2  9  10 25  (o,o) (e,o) (o,o) (e,o) (o,o)
-    // 4  3  8  11 24  (o,e) (e,e) (o,e) (e,e) (o,e)
-    // 5  6  7  12 23  (o,o) (e,o) (o,o) (e,o) (o,o)
-    // 16 15 14 13 22  (o,e) (e,e) (o,e) (e,e) (o,e)
+    // 1  2  9  10 25
+    // 4  3  8  11 24
+    // 5  6  7  12 23
+    // 16 15 14 13 22
 
     for (int i = 0; i < t; i++)
     {
         ll x, y;
-        cin >> x >> y;
+        cin >> y >> x;
 
         ll ans = 0;
 
@@ -35,6 +35,7 @@ int main()
         }
         else if (x > y)
         {
+            ans = x % 2 == 0 ? diag(x) - (x - y) : diag(x) + (x - y);
         }
 
         cout << ans << endl;
