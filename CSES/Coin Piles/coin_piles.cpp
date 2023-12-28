@@ -12,6 +12,7 @@ int main()
     for (int i = 0; i < t; i++)
     {
         cin >> a >> b;
+        // todo: re-derive divisibility by 3 requirement on paper later
         if ((a + b) % 3 != 0 || b > 2 * a || a > 2 * b)
         {
             cout << "NO" << endl;
