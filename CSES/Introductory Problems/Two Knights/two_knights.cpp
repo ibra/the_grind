@@ -5,15 +5,15 @@ using namespace std;
 
 int main()
 {
-    ll n;
-    cin >> n;
+    ll k;
+    cin >> k;
 
-    for (ll k = 1; k <= n; k++)
+    cout << 0 << endl;
+    for (ll n = 2; n <= k; n++)
     {
-        if (k == 1)
-        {
-            cout << 0 << endl;
-            continue;
-        }
+        ll allp = ((n * n * n * n) - (n * n)) / 2;
+        ll ans = allp - (4 * (n - 2) * (n - 1)); // todo: understand removal of attacking positions
+
+        cout << ans << endl;
     }
 }
