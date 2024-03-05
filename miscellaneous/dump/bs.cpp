@@ -5,7 +5,6 @@ using namespace std;
 int search(int x, vector<int> array, int a, int b)
 {
     int k = (a + b) / 2;
-    cout << k;
 
     if (array[k] == x)
         return k;
@@ -17,7 +16,7 @@ int search(int x, vector<int> array, int a, int b)
     }
     else
     {
-        a = k + 1;
+        a = k + 1; // low <- k + 1
         return search(x, array, a, b);
     }
     return -1;
