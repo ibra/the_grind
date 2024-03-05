@@ -10,6 +10,6 @@ int main()
 
     for (int i = 0; i < 1 << n; i++)
     {
-        cout << std::string(n, '0') << endl;
+        string b = string(n, '0');
     }
 }
